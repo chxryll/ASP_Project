@@ -1,14 +1,14 @@
 import pandas as pd
-file= pd.read_excel('IMVA.xls')
-print(file)
+data = pd.read_excel('IMVA.xls',sheet_name="IMVA")
+print(data)
 
-files=file['Period'].str.split(' ',n=1,expand=True)
+files = data['Periods'].str.split(' ',n=1,expand=True)
 print(files)
 
-file= file.assign(year=files[1])
+data = data.assign(year=data[1])
 
-file.index=file['year']
-print(file.index)
+data.index = data['year']
+print(data.index)
 
-set1=file[(file['year'] >=str(2008)) & (file['year'] <= str(2017))]
+set1= data[(data['year'] >=str(2008)) & (data['year'] <= str(2017))]
 print(set1)
